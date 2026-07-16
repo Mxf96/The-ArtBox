@@ -1,9 +1,15 @@
 <?php
+
 require 'includes/header.php';
-require 'oeuvres.php';
+require 'managers/oeuvres-manager.php';
+
+$oeuvres = getOeuvres();
+
 ?>
+
 <div id="liste-oeuvres">
     <?php foreach ($oeuvres as $oeuvre): ?>
+
         <article class="oeuvre">
             <a href="oeuvre.php?id=<?= $oeuvre['id'] ?>">
                 <img src="<?= $oeuvre['image'] ?>" alt="<?= $oeuvre['titre'] ?>">
@@ -11,6 +17,8 @@ require 'oeuvres.php';
                 <p class="description"><?= $oeuvre['artiste'] ?></p>
             </a>
         </article>
+
     <?php endforeach; ?>
 </div>
+
 <?php require 'includes/footer.php'; ?>
