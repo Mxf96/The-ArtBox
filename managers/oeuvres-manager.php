@@ -15,7 +15,7 @@ function getOeuvres()
 }
 
 
-function getOeuvreById($id)
+function getOeuvreById(int $id): array|false
 {
     global $dbh;
 
@@ -28,4 +28,21 @@ function getOeuvreById($id)
     ]);
 
     return $query->fetch(PDO::FETCH_ASSOC);
+}
+
+function addOeuvre(string $titre, string $artiste, string $image, string $description): bool
+{
+    global $dbh;
+
+    $query = $dbh->prepare(
+        'INSERT INTO oeuvres (titre, artiste, image, description)
+         VALUES (:titre, :artiste, :image, :description)'
+    );
+
+    return $query->execute([
+        'titre' => $titre,
+        'artiste' => $artiste,
+        'image' => $image,
+        'description' => $description
+    ]);
 }

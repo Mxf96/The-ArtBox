@@ -1,10 +1,11 @@
 <?php
 
-function sanitize_input($data)
+function escape(string $data): string
 {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    $data = strip_tags($data);
-    return $data;
+    return htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+}
+
+function sanitize_input(string $data): string
+{
+    return trim(strip_tags($data));
 }
