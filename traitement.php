@@ -8,11 +8,11 @@ require 'managers/security-manager.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // Nettoyage des données reçues 
-    $titre = sanitize_input($_POST['titre']);
-    $artiste = sanitize_input($_POST['artiste']);
-    $image = sanitize_input($_POST['image']);
-    $description = sanitize_input($_POST['description']);
+    // Nettoyage des données reçues
+    $titre = sanitize_input($_POST['titre'] ?? '');
+    $artiste = sanitize_input($_POST['artiste'] ?? '');
+    $image = sanitize_input($_POST['image'] ?? '');
+    $description = sanitize_input($_POST['description'] ?? '');
 
     // Tableau des erreurs
     $errors = [];
@@ -42,16 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         || !str_starts_with($image, 'https://')
     ) {
         $errors['image'] = "Le lien de l'image doit être une URL HTTPS valide.";
-    } else {
-
-        $headers = @get_headers($image, true);
-
-        if (!$headers || !isset($headers['Content-Type'])) {
-            $errors['image'] = "Le lien de l'image est inaccessible.";
-        } elseif (!str_starts_with($headers['Content-Type'], 'image/')) {
-            $errors['image'] = "Le lien doit correspondre à une image.";
-        }
     }
+
 
     // S'il y a des erreurs, on retourne au formulaire
     if (!empty($errors)) {
