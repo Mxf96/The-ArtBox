@@ -49,7 +49,7 @@ Avant de lancer le projet, il faut disposer de :
 Cloner le repository :
 
 ```bash
-git clone https://github.com/VOTRE-UTILISATEUR/VOTRE-REPOSITORY.git
+git clone https://github.com/Mxf96/The-ArtBox
 ```
 
 Placer le projet dans le dossier :
