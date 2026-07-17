@@ -19,7 +19,7 @@ require 'managers/security-manager.php';
             type="text"
             name="titre"
             id="titre"
-            value="<?= $old_data['titre'] ?? '' ?>">
+            value="<?= escape($old_data['titre'] ?? '') ?>">
 
         <?php if (isset($errors['titre'])): ?>
             <p class="error">
@@ -33,11 +33,11 @@ require 'managers/security-manager.php';
             type="text"
             name="artiste"
             id="artiste"
-            value="<?= $old_data['artiste'] ?? '' ?>">
+            value="<?= escape($old_data['artiste'] ?? '') ?>">
 
         <?php if (isset($errors['artiste'])): ?>
             <p class="error">
-                <?= $errors['artiste'] ?>
+                <?= escape($errors['artiste']) ?>
             </p>
         <?php endif; ?>
     </div>
@@ -47,11 +47,11 @@ require 'managers/security-manager.php';
             type="url"
             name="image"
             id="image"
-            value="<?= $old_data['image'] ?? '' ?>">
+            value="<?= escape($old_data['image'] ?? '') ?>">
 
         <?php if (isset($errors['image'])): ?>
             <p class="error">
-                <?= $errors['image'] ?>
+                <?= escape($errors['image']) ?>
             </p>
         <?php endif; ?>
     </div>
@@ -59,11 +59,11 @@ require 'managers/security-manager.php';
         <label for="description">Description</label>
         <textarea
             name="description"
-            id="description"><?= $old_data['description'] ?? '' ?></textarea>
+            id="description"><?= escape($old_data['description'] ?? '') ?></textarea>
 
         <?php if (isset($errors['description'])): ?>
             <p class="error">
-                <?= $errors['description'] ?>
+                <?= escape($errors['description']) ?>
             </p>
         <?php endif; ?>
     </div>

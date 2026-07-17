@@ -9,10 +9,10 @@ if (empty($_GET['id'])) {
     exit;
 }
 
-// Récupération de l'œuvre depuis la base de données
+// Recuperation de l'oeuvre depuis la base de donnees
 $oeuvre = getOeuvreById($_GET['id']);
 
-// Si aucune oeuvre trouvé, on redirige vers la page d'accueil
+// Si aucune oeuvre trouve, on redirige vers la page d'accueil
 if (!$oeuvre) {
     header('Location: index.php');
     exit;
